@@ -6,20 +6,20 @@
 - Arnau Oliva
 
 ## PDF
-- You can find the PDF with all the process behind to build all the project in this repo.
-- File called: CharDB_Final_Assignment.pdf
+- You can find the PDF with all the process behind building the project in this repository.
+- File name: ChartDB_Final_Assignment.pdf
+
+## SQL Indicators
+- You can find the SQL queries used to calculate the 5 key indicators in this repository.
+- File name: sql/kpi_queries.sql
+- Screenshots of the query results are also included in the repository (located in the docs/ folder), showing the execution and output of each indicator.
 
 ## Prerequisites
 - Python 3.9+
 - MySQL 8.0
 - dbt Core + dbt-mysql
-<<<<<<< HEAD
 
 ## Quick Setup
-=======
-## Nombres: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
-
-## Instalación rápida
 ```bash
 # 1. Install dependencies
 pip install -r requirements.txt
