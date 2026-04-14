@@ -1,56 +1,41 @@
 # Data Warehouse - Sales Funnel (MySQL)
 
-## Requisitos previos
+## Team Members
+- Maria Isabel Ortiz Naranjo
+- Hyerim Hong
+- Arnau Oliva
+
+## Prerequisites
 - Python 3.9+
 - MySQL 8.0
 - dbt Core + dbt-mysql
 
-## Instalación rápida
-s
-## Nombres: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
+## Quick Setup
 
 ```bash
-# 1. Instalar dependencias
+# 1. Install dependencies
 pip install -r requirements.txt
 
-# 2. Configurar base de datos
+# 2. Configure environment variables
 cp .env.example .env
 
-# 3. Crear la base si no existe
+# 3. Create the database if it does not exist
 mysql -u root -p -e "CREATE DATABASE IF NOT EXISTS sales_dw;"
 
-# 4. Crear tablas e índices
+# 4. Create tables and indexes
 mysql -u root -p sales_dw < sql/create_tables.sql
 mysql -u root -p sales_dw < sql/create_indexes.sql
 
-# 5. Cargar datos crudos
+# 5. Load raw data
 python scripts/load_sales_phases_raw.py
 python scripts/load_weather_raw.py
 python scripts/load_zipcode_raw.py
 
-# 6. Correr modelos dbt
+# 6. Run dbt models
 cd dbt_project
-# usa este perfil desde la carpeta actual
+
+# Use this profile from the current directory
 export DBT_PROFILES_DIR=.
+
 dbt run
 dbt test
-```
-
-## Notas importantes para MySQL
-- Usa `DATABASE_URL=mysql+pymysql://...`
-- El adapter de dbt para MySQL es `dbt-mysql`.
-- En dbt-mysql, el campo `schema` del profile corresponde a la base de datos destino.
-- Este proyecto asume MySQL 8.0 para evitar limitaciones antiguas del adapter.
-
-## Estructura del proyecto
-```text
-data_warehouse_mysql/
-├── data/                    ← Pon aquí tus CSVs
-├── scripts/                 ← Ingesta de datos
-├── dbt_project/             ← Transformaciones dbt
-│   └── models/
-│       ├── staging/         ← stg_*
-│       └── marts/           ← fct_*, dim_*, inv_*
-├── sql/                     ← DDL tablas e índices
-└── README.md
-```
