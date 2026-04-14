@@ -9,9 +9,15 @@
 - Python 3.9+
 - MySQL 8.0
 - dbt Core + dbt-mysql
+<<<<<<< HEAD
 
 ## Quick Setup
+=======
+## Nombres: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
+>>>>>>> ab6ea259b8f1af35d3c3ed4e44f8b8b5881372ee
 
+
+## Instalación rápida
 ```bash
 # 1. Install dependencies
 pip install -r requirements.txt
