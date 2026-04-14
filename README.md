@@ -4,11 +4,10 @@
 - Python 3.9+
 - MySQL 8.0
 - dbt Core + dbt-mysql
-
-## Instalación rápida
-s
 ## Nombres: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
 
+
+## Instalación rápida
 ```bash
 # 1. Instalar dependencias
 pip install -r requirements.txt
