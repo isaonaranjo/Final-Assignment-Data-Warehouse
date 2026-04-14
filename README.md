@@ -5,6 +5,10 @@
 - Hyerim Hong
 - Arnau Oliva
 
+## PDF
+- You can find the PDF with all the process behind to build all the project in this repo.
+- File called: CharDB_Final_Assignment.pdf
+
 ## Prerequisites
 - Python 3.9+
 - MySQL 8.0
