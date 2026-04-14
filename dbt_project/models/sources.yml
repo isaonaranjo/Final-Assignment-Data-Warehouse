@@ -1,0 +1,54 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: "{{ env_var('DB_NAME', 'sales_dw') }}"
+    tables:
+      - name: raw_sales_phases
+        description: "Datos crudos de fases de venta"
+        columns:
+          - name: lead_id
+            tests: [not_null]
+      - name: raw_zipcode
+        description: "Datos crudos de códigos postales"
+      - name: raw_weather
+        description: "Datos crudos meteorológicos"
+
+models:
+  - name: stg_sales_phases
+    description: "Staging: fases de venta limpias y tipadas"
+    columns:
+      - name: lead_id
+        tests: [not_null, unique]
+      - name: zipcode
+        tests: [not_null]
+
+  - name: stg_zipcode
+    description: "Staging: códigos postales normalizados"
+    columns:
+      - name: zipcode
+        tests: [not_null, unique]
+
+  - name: stg_weather
+    description: "Staging: datos meteorológicos limpios"
+
+  - name: dim_zipcode
+    description: "Dimensión de códigos postales"
+    columns:
+      - name: zipcode
+        tests: [not_null, unique]
+
+  - name: fct_sales_phases
+    description: "Fact table principal: un registro por lead"
+    columns:
+      - name: lead_id
+        tests: [not_null, unique]
+
+  - name: inv_tariff_metrics_ft
+    description: "Métricas agregadas por tipo de financiación"
+
+  - name: inv_monthly_kpi_ft
+    description: "KPIs mensuales del funnel"
+
+  - name: inv_province_metrics_ft
+    description: "Métricas por provincia"

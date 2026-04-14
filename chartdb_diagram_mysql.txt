@@ -1,0 +1,87 @@
+TABLE raw_sales_phases {
+  lead_id varchar [note: 'Lead identifier']
+  zipcode varchar
+  current_phase varchar
+  financing_type varchar
+  installation_price decimal
+  offer_sent_date varchar
+  project_validation_date varchar
+  ko_date varchar
+  ko_reason varchar
+  sale_dismissal_date varchar
+  created_at varchar
+  _loaded_at timestamp
+}
+
+TABLE raw_zipcode {
+  zipcode varchar
+  province varchar
+  city varchar
+  region varchar
+  _loaded_at timestamp
+}
+
+TABLE raw_weather {
+  zipcode varchar
+  date varchar
+  temp_max decimal
+  temp_min decimal
+  precipitation decimal
+  _loaded_at timestamp
+}
+
+TABLE dim_zipcode {
+  zipcode varchar [pk]
+  province varchar
+  city varchar
+  region varchar
+}
+
+TABLE sales_phases_ft {
+  lead_id varchar [pk]
+  zipcode varchar
+  current_phase varchar
+  financing_type varchar
+  installation_price decimal
+  offer_sent_date date
+  project_validation_date date
+  ko_date date
+  ko_reason varchar
+  sale_dismissal_date date
+  created_at date
+}
+
+TABLE inv_tariff_metrics_ft {
+  financing_type varchar
+  total_leads int
+  total_converted int
+  conversion_rate decimal
+  avg_price decimal
+  ko_rate decimal
+}
+
+TABLE inv_monthly_kpi_ft {
+  month date
+  total_leads int
+  total_converted int
+  conversion_rate decimal
+  total_ko int
+  ko_rate decimal
+  total_dismissed int
+  dismissal_rate decimal
+  avg_price decimal
+}
+
+TABLE inv_province_metrics_ft {
+  province varchar
+  total_leads int
+  total_converted int
+  conversion_rate decimal
+  total_ko int
+  ko_rate decimal
+  avg_price decimal
+}
+
+Ref: sales_phases_ft.zipcode > dim_zipcode.zipcode
+Ref: raw_weather.zipcode > raw_zipcode.zipcode
+Ref: raw_sales_phases.zipcode > raw_zipcode.zipcode
