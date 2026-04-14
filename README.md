@@ -20,9 +20,6 @@
 - dbt Core + dbt-mysql
 
 ## Quick Setup
-=======
-## Name: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
-
 ## Instalation
 ```bash
 # 1. Install dependencies
