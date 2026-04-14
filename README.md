@@ -13,9 +13,9 @@
 
 ## Quick Setup
 =======
-## Nombres: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
+## Name: Maria Isabel Ortiz, Hyerim Hong y Arnau Oliva
 
-## Instalación rápida
+## Instalation
 ```bash
 # 1. Install dependencies
 pip install -r requirements.txt
